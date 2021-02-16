@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+black = "==20.8b1"
+click = "*"
+config = "*"
+pytest = "*"
+pytest-cov = "*"
+
+[dev-packages]
+bandit = "*"
+gitpython = "*"
+isort = "*"
+pylint = "*"
+rope = "*"
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+black_ci = "black --line-length 100 --target-version py39 --check ."
+black_git = "black --line-length 100 --target-version py39 --quiet --check ."
+debug = "python -m pdb -c continue wren/__main__.py"
+lint = "python -m scripts.lint"
+test = "python -m pytest --cov-branch --cov-report term-missing:skip-covered --cov=wren"
+wren = "python -m wren"
