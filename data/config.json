@@ -1,0 +1,56 @@
+{
+  "poeditPath": "C:/Program Files (x86)/Poedit/GettextTools/bin",
+  "wowsPath": "C:/Program Files (x86)/Steam/steamapps/common/World of Warships/bin/3343484",
+  "changesets": [
+    {
+      "name": "joker",
+      "changes": [
+        {
+          "action": "replace_value",
+          "msgid": "IDS_PBSA204",
+          "value": "Herpes"
+        }
+      ]
+    },
+    {
+      "name": "radar",
+      "changes": [
+        {
+          "action": "prefix_value",
+          "msgid": "IDS_PRSC108",
+          "value": "φ "
+        }
+      ]
+    },
+    {
+      "name": "radarWithRange",
+      "changes": [
+        {
+          "action": "prefix_value",
+          "msgid": "IDS_PRSC108",
+          "value": "φ12 "
+        }
+      ]
+    },
+    {
+      "name": "cyrillic",
+      "changes": [
+        {
+          "action": "replace_value",
+          "msgid": "IDS_PRSC106",
+          "value": "Будённый"
+        },
+        {
+          "action": "replace_value",
+          "msgid": "IDS_PRSC107",
+          "value": "Щорс"
+        },
+        {
+          "action": "replace_value",
+          "msgid": "IDS_PRSC108",
+          "value": "Чапаев"
+        }
+      ]
+    }
+  ]
+}
