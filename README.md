@@ -19,7 +19,7 @@ This is a work in progress. By one person. In his spare time. **Caveat emptor!**
 #### TODO: CI
 
 ![Build status][github-actions-badge-img]
-[![Technical debt](https://sonarcloud.io/api/project_badges/measure?project=kthy_uml.cs&metric=sqale_index)](https://sonarcloud.io/dashboard?id=kthy_uml.cs)
+[![Technical debt][sonarcloud-badge-img]][sonarcloud-badge-href]
 
 ## Usage
 
@@ -38,17 +38,11 @@ Options:
 
 ## Development environment setup
 
-### TODO: Terraform
-
-Ubuntu on WSL:
+* Assumes you have `pipenv` installed and in your path.
+* Assumes Windows 10.
 
 ```bash
-$ sudo apt install graphviz
-$ sudo apt install python3-pip
-$ pip3 install --user pipenv
-$ . .profile
-$ pipenv --version
-pipenv, version 2018.11.26
+pipenv install --dev
 ```
 
 ## Concept
@@ -66,10 +60,12 @@ pipenv, version 2018.11.26
 [black-badge-href]: https://github.com/psf/black
 [conventional-commits-badge-img]: https://img.shields.io/badge/conventional%20commits-1.0.0-blue.svg
 [conventional-commits-badge-href]: https://www.conventionalcommits.org/en/v1.0.0/
-[github-actions-badge-img]: https://github.com/kthy/wows-ship-renamer/workflows/build/badge.svg
-[pyup-badge-img]: https://pyup.io/repos/github/kthy/wows-ship-renamer/shield.svg
-[pyup-badge-href]: https://pyup.io/repos/github/kthy/wows-ship-renamer/
-[requirements-badge-img]: https://requires.io/github/kthy/wows-ship-renamer/requirements.svg?branch=main
-[requirements-badge-href]: https://requires.io/github/kthy/wows-ship-renamer/requirements/?branch=main
+[github-actions-badge-img]: https://github.com/kthy/wren/workflows/build/badge.svg
+[pyup-badge-img]: https://pyup.io/repos/github/kthy/wren/shield.svg
+[pyup-badge-href]: https://pyup.io/repos/github/kthy/wren/
+[requirements-badge-img]: https://requires.io/github/kthy/wren/requirements.svg?branch=main
+[requirements-badge-href]: https://requires.io/github/kthy/wren/requirements/?branch=main
+[sonarcloud-badge-img]: https://sonarcloud.io/api/project_badges/measure?project=kthy_wren&metric=sqale_index
+[sonarcloud-badge-href]: https://sonarcloud.io/dashboard?id=kthy_wren
 [Wargaming.net]: https://wargaming.com/
 [World of Warships]: https://worldofwarships.eu/
