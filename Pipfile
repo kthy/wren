@@ -9,6 +9,7 @@ click = "*"
 config = "*"
 pytest = "*"
 pytest-cov = "*"
+shortuuid = "*"
 
 [dev-packages]
 bandit = "*"

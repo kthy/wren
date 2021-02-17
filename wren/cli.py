@@ -5,6 +5,7 @@ from os.path import exists as path_exists
 
 import click
 from config import Config
+from shortuuid import uuid
 
 # from subprocess import CalledProcessError, run  # nosec
 
@@ -16,6 +17,8 @@ from config import Config
 )
 def rename_ships(changesets, config):
     """Main CLI entrypoint."""
+
+    run_id = uuid()
 
     try:
         click.echo(f"Using config from {click.format_filename(config)}")
@@ -35,6 +38,7 @@ def rename_ships(changesets, config):
         for changeset in changesets:
             process_changeset(cfg[f"changesets.{changeset}"])
     except Exception as err:
+        click.echo(f"Aborting run {run_id}")
         raise err
 
 
