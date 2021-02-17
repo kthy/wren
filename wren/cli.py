@@ -10,7 +10,13 @@ import click
 from config import Config
 
 from wren.change import Change
-from wren.pomo import *
+from wren.pomo import (
+    backup_original_mo,
+    compile_mo,
+    install_modified_mo,
+    prepare_po,
+    restore_original_mo,
+)
 
 # from subprocess import CalledProcessError, run  # nosec
 
@@ -105,6 +111,7 @@ def raise_if_not_path_exists(key, path):
     """Raise ClickException if the path at key does not exist."""
     if not path_exists(path):
         raise click.ClickException(f"Invalid value for '{key}': Path '{path}' does not exist")
+
 
 def _bindir(wows_path):
     """Return the highest numbered subfolder of the WoWs bin directory."""

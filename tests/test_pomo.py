@@ -3,14 +3,22 @@
 
 from os import makedirs, remove
 from os.path import abspath, exists
-from shutil import rmtree, copyfile
+from shutil import copyfile, rmtree
 from tempfile import mkdtemp
 
 from pytest import fixture, raises
 
-from wren.pomo import LC, backup_original_mo, compile_mo, install_modified_mo, prepare_po, restore_original_mo
+from wren.pomo import (
+    LC,
+    backup_original_mo,
+    compile_mo,
+    install_modified_mo,
+    prepare_po,
+    restore_original_mo,
+)
 
 BIN = "1234567"
+
 
 @fixture(name="workdir")
 def fixture_workdir():
@@ -21,6 +29,7 @@ def fixture_workdir():
     print("Teardown workdir")
     rmtree(tmpdir)
 
+
 @fixture(name="wowsdir")
 def fixture_wowsdir():
     """Yield WoWs directory."""
@@ -30,6 +39,7 @@ def fixture_wowsdir():
     yield tmpdir
     print("Teardown wowsdir")
     rmtree(tmpdir)
+
 
 def _prepare_global_mo(wowsbin):
     binlcdir = abspath(f"{wowsbin}/{LC}")
