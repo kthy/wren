@@ -1,7 +1,7 @@
-# World of Warships Ship Renamer
+# World of Warships Renamer
 
 Does what it says on the tin. (Or will some day, at least.)
-A utility that can rename ships in the [World of Warships] game by [Wargaming.net].
+A utility that can rename ships in the [World of Warships] game by [Wargaming.net]. Hence, **W**orld of Warships **Ren**amer &rarr; **wren**.
 
 ## ⚠️ WIP
 
