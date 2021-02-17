@@ -7,9 +7,9 @@ name = "pypi"
 black = "==20.8b1"
 click = "*"
 config = "*"
+filehash = "==0.1.dev5"
 pytest = "*"
 pytest-cov = "*"
-shortuuid = "*"
 
 [dev-packages]
 bandit = "*"

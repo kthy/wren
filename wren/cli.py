@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """CLI entrypoint."""
 
+from glob import glob
 from os.path import abspath, exists as path_exists
 from re import ASCII, match
+from tempfile import TemporaryDirectory
 
 import click
 from config import Config
-from shortuuid import uuid
 
 from wren.change import Change
 from wren.pomo import *
@@ -26,33 +27,31 @@ def rename_ships(changesets, config, undo):
     A utility that can rename ships in the World of Warships game by Wargaming.net.
     """
 
-    run_id = uuid()
-
     try:
         cfg = load_config(config)
-        workdir = get_working_directory(cfg, run_id)
-        wowsdir = get_warship_directory(cfg)
+        with get_working_directory(cfg) as workdir:
+            wowsdir = get_warship_directory(cfg)
 
-        if undo:
-            restore_original_mo(workdir, wowsdir)
-            return
+            if undo:
+                restore_original_mo(wowsdir)
+                return
 
-        if len(changesets) == 0:
-            changesets = get_default_changeset()
+            if len(changesets) == 0:
+                changesets = get_default_changeset()
 
-        backup_original_mo(wowsdir)
+            backup_original_mo(wowsdir)
 
-        prepare_po(workdir)
+            prepare_po(workdir)
 
-        for changeset in changesets:
-            apply_changeset(workdir, cfg[f"changesets.{changeset}"])
+            for changeset in changesets:
+                apply_changeset(workdir, cfg[f"changesets.{changeset}"])
 
-        compile_mo(workdir)
+            compile_mo(workdir)
 
-        install_modified_mo(workdir, wowsdir)
+            install_modified_mo(workdir, wowsdir)
     except Exception as err:
-        click.echo(f"Aborting run {run_id}")
-        restore_original_mo(workdir, wowsdir)
+        click.echo("Aborting…")
+        restore_original_mo(wowsdir)
         raise err
 
 
@@ -78,22 +77,21 @@ def get_default_changeset():
 
 def get_warship_directory(cfg):
     """Get a string with the path to the WoWs directory."""
-    # TODO: get bindir by sorting dirs in wowsdir
-    bindir = "3471783"
-    assert match("^\\d{7}$", bindir, ASCII)
     cfg_key = "wowsPath"
-    wowsdir = abspath(f"{cfg[cfg_key]}/{bindir}")
+    wows_path = cfg[cfg_key]
+    bindir = _bindir(wows_path)
+    wowsdir = abspath(f"{wows_path}/{bindir}")
     raise_if_not_path_exists(cfg_key, wowsdir)
     return wowsdir
 
 
-def get_working_directory(cfg, run_id):
+def get_working_directory(cfg):
     """Get a string with the path to the working directory."""
     cfg_key = "workingDirectory"
     workdir_base = cfg[cfg_key]
     raise_if_not_path_exists(cfg_key, workdir_base)
-    workdir = abspath(f"{workdir_base}/wren-{run_id}")
-    click.echo(f"Working directory {workdir}")
+    workdir = TemporaryDirectory(prefix="wren-", dir=workdir_base)
+    click.echo(f"Working directory {workdir.name}")
     return workdir
 
 
@@ -107,3 +105,10 @@ def raise_if_not_path_exists(key, path):
     """Raise ClickException if the path at key does not exist."""
     if not path_exists(path):
         raise click.ClickException(f"Invalid value for '{key}': Path '{path}' does not exist")
+
+def _bindir(wows_path):
+    """Return the highest numbered subfolder of the WoWs bin directory."""
+    bindir = sorted(glob(wows_path))[-1]
+    assert match("^\\d{7}$", bindir, ASCII)
+    assert bindir == "3471783"
+    return bindir
