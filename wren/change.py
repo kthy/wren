@@ -22,7 +22,6 @@ class Change:
         self.action = Action(action)
         self.msgid = msgid
         self.value = value
-        print(self)
 
     def __eq__(self, other):
         return all(
