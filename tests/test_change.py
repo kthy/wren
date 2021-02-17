@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Test the Action and Change."""
 
 from wren.change import Action, Change

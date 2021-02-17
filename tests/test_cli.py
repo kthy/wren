@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Test the wren CLI."""
 
 # from pytest import fixture
