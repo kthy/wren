@@ -12,7 +12,3 @@
 #     for ideas to expand this.
 #     """
 #     yield backend.PLATEYPUS.test_client()
-
-def test_tautology():
-    """This test canary always passes."""
-    assert 2 + 2 == 4
