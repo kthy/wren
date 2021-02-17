@@ -7,6 +7,8 @@ import click
 from config import Config
 from shortuuid import uuid
 
+from wren.change import Action
+
 # from subprocess import CalledProcessError, run  # nosec
 
 
@@ -45,3 +47,5 @@ def rename_ships(changesets, config):
 def process_changeset(changeset_config):
     """Process a changeset."""
     click.echo(changeset_config)
+    actions = [Action(*change) for change in changeset_config]
+    print(actions)
