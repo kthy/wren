@@ -2,7 +2,7 @@
 """CLI entrypoint."""
 
 from glob import glob
-from os.path import abspath, exists as path_exists
+from os.path import abspath, basename, exists as path_exists
 from re import ASCII, match
 from tempfile import TemporaryDirectory
 
@@ -22,6 +22,7 @@ from wren.pomo import (
 
 HELP_CFG = "Path to config file."
 HELP_UNDO = "If provided, the original names will be reinstated."
+
 
 @click.command()
 @click.argument("changesets", nargs=-1)
@@ -127,7 +128,7 @@ def raise_if_not_path_exists(key, path):
 
 def _bindir(wows_path):
     """Return the highest numbered subfolder of the WoWs bin directory."""
-    bindir = sorted(glob(wows_path))[-1]
-    assert match("^\\d{7}$", bindir, ASCII)
-    assert bindir == "3471783"
+    bindir = basename(sorted(glob(f"{wows_path}/*"))[-1])
+    if not match("^\\d{7}$", bindir, ASCII):
+        raise ValueError(f"{bindir} is not a string of 7 digits")
     return bindir

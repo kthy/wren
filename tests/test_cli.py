@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 """Test the wren CLI."""
 
-# from pytest import fixture
+from os import makedirs
+from os.path import abspath
 
-# from wren.cli import ()
+from fixtures import fixture_wowsdir  # pylint: disable=unused-import
 
+from wren.cli import _bindir
 
-# @fixture
-# def client():
-#     """Yield client fixture.
-#     See <http://flask.pocoo.org/docs/1.0/testing/#the-testing-skeleton>
-#     for ideas to expand this.
-#     """
-#     yield backend.PLATEYPUS.test_client()
+def test__bindir(wowsdir):
+    """Test the _bindir method."""
+    bin_path = abspath(wowsdir + "/..")
+    for subdir in ("1111111", "2222222", "3333333", "4444444", "5555555", "6666666"):
+        makedirs(f"{bin_path}/{subdir}")
+    assert _bindir(bin_path) == "7777777"
