@@ -16,25 +16,30 @@ This is a work in progress. By one person. In his spare time. **Caveat emptor!**
 
 ### CI
 
-#### TODO: CI
-
 ![Build status][github-actions-badge-img]
 [![Code coverage][codecov-badge-img]][codecov-badge-href]
 [![Technical debt][sonarcloud-badge-img]][sonarcloud-badge-href]
 
 ## Usage
 
-### TODO: Usage
+```
+$ wren --help
+Usage: wren [OPTIONS] [CHANGESETS]...
 
-```bash
-$ python3 -m wren --help
-Usage: wren [OPTIONS]
+  wren = Warships RENamer. A utility that can rename ships in the World of
+  Warships game by Wargaming.net.
 
-  Foo.
+  Applies all changes found in the list of CHANGESETS, as defined in the
+  provided config file.
+
+  Example:
+
+      $ wren radar cyrillic
 
 Options:
-  --config FILE          Path to the configuration file.
-  --help                 Show this message and exit.
+  -c, --config PATH  Path to config file.  [default: ./wren.cfg]
+  -u, --undo         If provided, the original names will be reinstated.
+  --help             Show this message and exit.```
 ```
 
 ## Development environment setup
@@ -45,17 +50,6 @@ Options:
 ```bash
 pipenv install --dev
 ```
-
-## Concept
-
-1. Convert `${wowsPath}/res/texts/en/LC_MESSAGES/global.mo` to `temp/global.po`
-   using `msgunfmt` from [PoEdit](https://github.com/vslavik/poedit).
-2. Depending on input params, search and replace or prefix:
-    * Prefix ship names with radar symbols and, optionally, range.
-    * Convert names of Russian ships to cyrillic alphabet.
-3. Convert the changed `temp/global.po` using `msgfmt` into `temp/global.mo`.
-4. Rename the original `global.mo` to `global.mo.original`.
-5. Copy the new `global.mo` to where the original was.
 
 [black-badge-href]: https://github.com/psf/black
 [black-badge-img]: https://img.shields.io/badge/code%20style-black-000000.svg
