@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """CLI entrypoint."""
 
-from glob import glob
+from os import walk
 from os.path import abspath, basename, exists as path_exists
 from re import ASCII, match
 from tempfile import TemporaryDirectory
@@ -128,7 +128,9 @@ def raise_if_not_path_exists(key, path):
 
 def _bindir(wows_path):
     """Return the highest numbered subfolder of the WoWs bin directory."""
-    bindir = basename(sorted(glob(f"{wows_path}/*"))[-1])
+    # See <https://stackoverflow.com/a/142535>
+    bindirs = sorted(next(walk(wows_path))[1])
+    bindir = basename(bindirs[-1])
     if not match("^\\d{7}$", bindir, ASCII):
         raise ValueError(f"{bindir} is not a string of 7 digits")
     return bindir
