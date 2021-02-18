@@ -23,7 +23,8 @@ def compile_mo(workdir):
 
 def install_modified_mo(workdir, wowsdir):
     """Copy the new `global.mo` to where the original was."""
-    raise NotImplementedError
+    global_mo_path = _global_mo_path(wowsdir)
+    _copyfile_and_checksum(f"{workdir}/global.mo", global_mo_path)
 
 
 def prepare_po(workdir):
