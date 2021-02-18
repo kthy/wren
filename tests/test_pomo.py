@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Test the gettext manipulation methods."""
 
-from os import makedirs, remove
+from os import environ, makedirs, remove
 from os.path import abspath, exists
 from shutil import copyfile, rmtree
 from tempfile import mkdtemp
@@ -18,6 +18,7 @@ from wren.pomo import (
 )
 
 BIN = "1234567"
+TEST_MO_PATH = "./tests/testdata/global.mo"
 
 
 @fixture(name="workdir")
@@ -44,7 +45,11 @@ def fixture_wowsdir():
 def _prepare_global_mo(wowsbin):
     binlcdir = abspath(f"{wowsbin}/{LC}")
     makedirs(binlcdir)
-    copyfile("./tests/testdata/global.mo", f"{binlcdir}/global.mo")
+    try:
+        print(f"CI={environ['CI']}")
+    except KeyError:
+        pass
+    copyfile(TEST_MO_PATH, f"{binlcdir}/global.mo") # FIXME: doesn't work in github actions
     assert exists(f"{binlcdir}/global.mo")
 
 
