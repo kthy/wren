@@ -22,8 +22,8 @@ rope = "*"
 python_version = "3.9"
 
 [scripts]
-black_ci = "black --line-length 100 --target-version py39 --check ."
-black_git = "black --line-length 100 --target-version py39 --quiet --check ."
+black_ci = "black --line-length 100 --target-version py38 --check ."
+black_git = "black --line-length 100 --target-version py38 --quiet --check ."
 lint = "python -m scripts.lint"
 test = "python -m pytest --cov-branch --cov-report term-missing:skip-covered --cov=wren"
 wren = "python -m wren"
