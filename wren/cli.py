@@ -20,17 +20,29 @@ from wren.pomo import (
 
 # from subprocess import CalledProcessError, run  # nosec
 
+HELP_CFG = "Path to config file."
+HELP_UNDO = "If provided, the original names will be reinstated."
 
 @click.command()
 @click.argument("changesets", nargs=-1)
 @click.option(
-    "-c", "--config", default="./wren.cfg", type=click.Path(exists=True), show_default=True
+    "-c",
+    "--config",
+    default="./wren.cfg",
+    help=HELP_CFG,
+    type=click.Path(exists=True),
+    show_default=True,
 )
-@click.option("-u", "--undo", is_flag=True)
+@click.option("-u", "--undo", help=HELP_UNDO, is_flag=True)
 def rename_ships(changesets, config, undo):
-    """wren = Warships RENamer.
+    """wren = Warships RENamer. A utility that can rename ships in the World of Warships game by
+    Wargaming.net.
 
-    A utility that can rename ships in the World of Warships game by Wargaming.net.
+    Applies all changes found in the list of CHANGESETS, as defined in the provided config file.
+
+    Example:
+
+        $ wren radar cyrillic
     """
 
     try:
