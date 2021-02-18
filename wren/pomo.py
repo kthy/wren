@@ -11,12 +11,9 @@ LC = "res/texts/en/LC_MESSAGES"
 
 def backup_original_mo(wowsdir):
     """Copy the original `global.mo` to `global.mo.original`."""
-    global_mo_path = f"{wowsdir}/{LC}/global.mo"
-    backup_mo_path = f"{global_mo_path}.original"
-    copyfile(global_mo_path, backup_mo_path)
-    hasher = FileHash("md5")
-    if hasher.hash_file(global_mo_path) != hasher.hash_file(backup_mo_path):
-        raise OSError("Copy failed, hash mismatch detected")
+    global_mo_path = _global_mo_path(wowsdir)
+    backup_mo_path = _backup_mo_path(wowsdir)
+    _copyfile_and_checksum(global_mo_path, backup_mo_path)
 
 
 def compile_mo(workdir):
@@ -36,10 +33,25 @@ def prepare_po(workdir):
 
 def restore_original_mo(wowsdir):
     """Reinstate the original `global.mo` from `global.mo.original`."""
-    global_mo_path = f"{wowsdir}/{LC}/global.mo"
-    backup_mo_path = f"{global_mo_path}.original"
-    copyfile(backup_mo_path, global_mo_path)
-    hasher = FileHash("md5")
-    if hasher.hash_file(global_mo_path) != hasher.hash_file(backup_mo_path):
-        raise OSError("Copy failed, hash mismatch detected")
+    global_mo_path = _global_mo_path(wowsdir)
+    backup_mo_path = _backup_mo_path(wowsdir)
+    _copyfile_and_checksum(backup_mo_path, global_mo_path)
     remove(backup_mo_path)
+
+
+def _copyfile_and_checksum(from_path, to_path):
+    """Copy a file from from_path to to_path.
+
+    Raises OSError if the new file's checksum doesn't match the original."""
+    copyfile(from_path, to_path)
+    hasher = FileHash("md5")
+    if hasher.hash_file(from_path) != hasher.hash_file(to_path):
+        raise OSError("Copy failed, hash mismatch detected")
+
+
+def _backup_mo_path(wowsdir):
+    return f"{_global_mo_path(wowsdir)}.original"
+
+
+def _global_mo_path(wowsdir):
+    return f"{wowsdir}/{LC}/global.mo"
