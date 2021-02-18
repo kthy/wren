@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         pipenv install
-    - name: Paint it Black
+    - name: Paint it black
       run: |
         pipenv run black_ci
     - name: Run tests
