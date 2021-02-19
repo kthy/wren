@@ -53,14 +53,20 @@ Available changesets in the packaged version are:
 pipenv install --dev
 ```
 
-*Et voilà!* :wink:
+*Et voilà!* 😉
 
 ## TODO
 
 * Enter all substitions in `wren.cfg`.
 * Clean out TODOs in the source files.
-* Publish as `.exe` when pushing to `main` using
-  [this action](https://github.com/marketplace/actions/pyinstaller-windows).
+* Extend `build-main`:
+  * Build `.exe` when pushing to `main` using
+    [this action](https://github.com/marketplace/actions/pyinstaller-windows).
+    * Use `.spec` file.
+    * Use `create-version-file` to create `fixedfileinfo.txt` combined with `GITHUB_RUN_ID`.
+    * Fix `.ico` file in different sizes ([manually](https://superuser.com/a/491198),
+      [script](https://superuser.com/a/683203), [action](https://github.com/jruipinto/ImageMagick-action))
+  * Zip `.exe` and `wren.cfg` together and release.
 
 ---
 
