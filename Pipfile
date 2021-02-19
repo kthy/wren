@@ -8,6 +8,7 @@ black = "==20.8b1"
 click = "*"
 config = "*"
 filehash = "==0.1.dev5"
+polib = {ref = "d6d45bb35268ed1fc6c967c8e1cad4240e7fe255", git = "https://github.com/kthy/polib.git"}
 pytest = "*"
 pytest-cov = "*"
 

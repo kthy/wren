@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d4bb9a70818e87bbd2eeacedb9d4dedbf62ed05a03f985ffa9bfe0033ecd4a17"
+            "sha256": "23166abb1abf6215176d165d6df5bd32d76ff5b02050c725ddb451e54dcc6839"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -170,6 +170,10 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==0.13.1"
+        },
+        "polib": {
+            "git": "https://github.com/kthy/polib.git",
+            "ref": "d6d45bb35268ed1fc6c967c8e1cad4240e7fe255"
         },
         "py": {
             "hashes": [
