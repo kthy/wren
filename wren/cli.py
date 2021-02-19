@@ -75,7 +75,7 @@ def rename_ships(changesets, config, undo):
 
 def default_changesets():
     """Get the default changesets."""
-    return ["radarWithRange"]
+    return ["radar"]
 
 
 def get_warship_directory(cfg):
