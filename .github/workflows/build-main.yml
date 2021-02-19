@@ -1,0 +1,33 @@
+name: build-main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install pipenv
+      uses: dschep/install-pipenv-action@v1
+    - name: Install dependencies
+      run: |
+        pipenv install
+    - name: Paint it black
+      run: |
+        pipenv run black_ci
+    - name: Run tests
+      run: |
+        pipenv run test
