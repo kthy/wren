@@ -9,7 +9,7 @@ on:
       - dev
 
 jobs:
-  build:
+  build-dev:
 
     runs-on: windows-2019
     strategy:
