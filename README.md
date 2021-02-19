@@ -7,6 +7,15 @@ A utility that can rename ships in the [World of Warships] game by [Wargaming.ne
 
 This is a work in progress. By one person. In his spare time. **Caveat emptor!**
 
+### TODO
+
+* Make repo public and get the broken integrations (requres.io, pyup, codecov, sonarcloud) working.
+* Clean out TODOs in the source files.
+* Create `dev` branch.
+* Make separate builds (and badges) for `main` and `dev`.
+* Publish as `.exe` when pushing to `main` using
+  [this action](https://github.com/marketplace/actions/pyinstaller-windows).
+
 ### Code
 
 [![Requirements Status][requirements-badge-img]][requirements-badge-href]
