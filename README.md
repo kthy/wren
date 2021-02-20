@@ -64,13 +64,6 @@ pipenv install --dev
    release notes on Github.
 1. Tag the latest commit with the new version name, e.g. `v1.2.3`, and push to remote.
 
-## TODO
-
-* Enter all substitions in `wren.cfg`.
-* Clean out TODOs in the source files.
-* Fix `.ico` file in different sizes ([manually](https://superuser.com/a/491198),
-  [script](https://superuser.com/a/683203), [action](https://github.com/jruipinto/ImageMagick-action))
-
 ---
 
 [![Code style: black][black-badge-img]][black-badge-href]
