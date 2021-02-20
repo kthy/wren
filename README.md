@@ -72,7 +72,7 @@ pipenv install --dev
 ![Build status, main branch][github-actions-main-badge-img]
 ![Build status, dev branch][github-actions-dev-badge-img]
 [![Code coverage][codecov-badge-img]][codecov-badge-href]
-[![Technical debt][sonarcloud-badge-img]][sonarcloud-badge-href]
+[![Maintainability rating][sonarcloud-badge-img]][sonarcloud-badge-href]
 
 ---
 
@@ -89,6 +89,6 @@ pipenv install --dev
 [requirements-badge-href]: https://requires.io/github/kthy/wren/requirements/?branch=main
 [requirements-badge-img]: https://requires.io/github/kthy/wren/requirements.svg?branch=main
 [sonarcloud-badge-href]: https://sonarcloud.io/dashboard?id=kthy_wren
-[sonarcloud-badge-img]: https://sonarcloud.io/api/project_badges/measure?project=kthy_wren&metric=sqale_index
+[sonarcloud-badge-img]: https://sonarcloud.io/api/project_badges/measure?project=kthy_wren&metric=sqale_rating
 [Wargaming.net]: https://wargaming.com/
 [World of Warships]: https://worldofwarships.eu/
