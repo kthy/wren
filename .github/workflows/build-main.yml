@@ -38,8 +38,8 @@ jobs:
     - name: Create FFI file
       run: |
         cat version.txt -outvariable VERSION
-        echo "SEMVER=$VERSION" >> GITHUB_ENV
-        pipenv run create-version-file version.yml --outfile fixedfileinfo.txt --version ${{ env.SEMVER }}.${{ env.GITHUB_RUN_ID }}
+        echo "semver=$VERSION" >> $GITHUB_ENV
+        pipenv run create-version-file version.yml --outfile fixedfileinfo.txt --version ${{ env.semver }}.${{ github.run_id }}
     - name: Build executable
       run: |
         pipenv run python -OO -m PyInstaller --clean --noconfirm --onefile --name wren --icon ./img/wren-logo-32.ico --version-file fixedfileinfo.txt ./wren/__main__.py
