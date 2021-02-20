@@ -35,3 +35,22 @@ jobs:
       uses: codecov/codecov-action@v1
       with:
         fail_ci_if_error: true
+    - name: Create FFI file
+      run: |
+        cat version.txt -outvariable VERSION
+        echo "SEMVER=$VERSION" >> GITHUB_ENV
+        create-version-file version.yml --outfile fixedfileinfo.txt --version ${{ env.SEMVER }}.${{ env.GITHUB_RUN_ID }}
+    - name: Build executable
+      run: |
+        pipenv run python -OO -m PyInstaller --clean --noconfirm --onefile --name wren --icon ./img/wren-logo-32.ico --version-file fixedfileinfo.txt ./wren/__main__.py
+    - name: Create archive for release
+      uses: papeloto/action-zip@v1
+      with:
+        files: dist/wren.exe wren.cfg
+        recursive: false
+        dest: wren.zip
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: wren
+        path: ${{ github.workspace }}/wren.zip
