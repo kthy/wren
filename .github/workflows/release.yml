@@ -35,7 +35,7 @@ jobs:
       - name: Create zip archive for release
         run: |
           move dist/wren.exe .
-          7z a -tzip -bd wren-${{ steps.semver.outputs.semver }}.zip wren.cfg wren.exe README.md
+          7z a -tzip -bd wren-${{ steps.semver.outputs.semver }}.zip wren.cfg wren.exe README.txt
       - name: Release
         uses: softprops/action-gh-release@v1
         env:
@@ -43,4 +43,4 @@ jobs:
         with:
           body_path: release-notes/v${{ steps.semver.outputs.semver }}.md
           files: wren-${{ steps.semver.outputs.semver }}.zip
-          prerelease: true
+          prerelease: false
