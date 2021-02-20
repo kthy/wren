@@ -48,7 +48,8 @@ jobs:
         pipenv run python -OO -m PyInstaller --clean --noconfirm --onefile --name wren --icon ./img/wren-logo-32.ico --version-file fixedfileinfo.txt ./wren/__main__.py
     - name: Create archive for release
       run: |
-        7z a -tzip -bd wren.zip dist/wren.exe wren.cfg README.md
+        move dist/wren.exe .
+        7z a -tzip -bd wren.zip wren.cfg wren.exe README.md
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
