@@ -55,6 +55,15 @@ pipenv install --dev
 
 *Et voilà!* 😉
 
+## Release HOWTO
+
+1. Commit the code to be released as a new version and verify that the CI build
+   completed without errors.
+1. Commit a new text file in `./release-notes/` named after the new version's number,
+   e.g. `./release-notes/v1.2.3.txt`. The text in this file will be displayed as
+   release notes on Github.
+1. Tag the latest commit with the new version name, e.g. `v1.2.3`, and push to remote.
+
 ## TODO
 
 * Enter all substitions in `wren.cfg`.
