@@ -59,14 +59,8 @@ pipenv install --dev
 
 * Enter all substitions in `wren.cfg`.
 * Clean out TODOs in the source files.
-* Extend `build-main`:
-  * Build `.exe` when pushing to `main` using
-    [this action](https://github.com/marketplace/actions/pyinstaller-windows).
-    * Use `.spec` file.
-    * Use `create-version-file` to create `fixedfileinfo.txt` combined with `GITHUB_RUN_ID`.
-    * Fix `.ico` file in different sizes ([manually](https://superuser.com/a/491198),
-      [script](https://superuser.com/a/683203), [action](https://github.com/jruipinto/ImageMagick-action))
-  * Zip `.exe` and `wren.cfg` together and release.
+* Fix `.ico` file in different sizes ([manually](https://superuser.com/a/491198),
+  [script](https://superuser.com/a/683203), [action](https://github.com/jruipinto/ImageMagick-action))
 
 ---
 
@@ -74,8 +68,9 @@ pipenv install --dev
 [![Conventional commits][conventional-commits-badge-img]][conventional-commits-badge-href]
 [![Requirements Status][requirements-badge-img]][requirements-badge-href]
 [![Updates][pyup-badge-img]][pyup-badge-href]
-![Build status, dev branch][github-actions-dev-badge-img]
+
 ![Build status, main branch][github-actions-main-badge-img]
+![Build status, dev branch][github-actions-dev-badge-img]
 [![Code coverage][codecov-badge-img]][codecov-badge-href]
 [![Technical debt][sonarcloud-badge-img]][sonarcloud-badge-href]
 
