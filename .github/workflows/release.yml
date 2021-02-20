@@ -35,12 +35,12 @@ jobs:
       - name: Create zip archive for release
         run: |
           move dist/wren.exe .
-          7z a -tzip -bd wren.zip wren.cfg wren.exe README.md
+          7z a -tzip -bd wren-${{ steps.semver.outputs.semver }}.zip wren.cfg wren.exe README.md
       - name: Release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           body_path: release-notes/v${{ steps.semver.outputs.semver }}.txt
-          files: wren.zip
+          files: wren-${{ steps.semver.outputs.semver }}.zip
           prerelease: true
