@@ -14,14 +14,6 @@ BIN = "7777777"
 TEST_MO_PATH = "./tests/testdata/global.mo"
 
 
-@fixture(name="workdir")
-def fixture_workdir():
-    """Yield working directory."""
-    tmpdir = mkdtemp(prefix="wren-pytest-")
-    yield tmpdir
-    rmtree(tmpdir)
-
-
 @fixture(name="wowsdir")
 def fixture_wowsdir():
     """Yield WoWs directory."""

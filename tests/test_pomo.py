@@ -4,7 +4,7 @@
 from os import remove
 from os.path import exists
 
-from fixtures import fixture_workdir, fixture_wowsdir  # pylint: disable=unused-import
+from fixtures import fixture_wowsdir  # pylint: disable=unused-import
 
 from wren.pomo import LC, backup_original_mo, restore_original_mo
 
