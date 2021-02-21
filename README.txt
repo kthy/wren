@@ -6,8 +6,12 @@ that wren.exe and wren.cfg are in the same directory (folder).
 
 Now open wren.cfg with e.g. Notepad and check that the wowsPath at the top
 matches the WoWs bin directory on your computer. If you're running WoWs through
-Steam, it should be fine. Don't touch anything else in the file, unless you're
-feeling particularly adventurous.
+Steam, it should be fine. If your in-game language is not English, you'll also
+need to change the locale setting. For a list of locales, look in the
+<wowsPath>\<number>\res\texts directory.
+
+Don't touch anything else in the cfg file, unless you're feeling particularly
+adventurous.
 
 If you simply double click the exe file now, the next time you start WoWs you
 should see the ship names in your game prefixed with markers showing which ones

@@ -40,9 +40,10 @@ def rename_ships(changesets, config, undo):
     try:
         cfg = load_config(config)
         wowsdir = get_warship_directory(cfg)
+        locale = cfg["locale"]
 
         if undo:
-            restore_original_mo(wowsdir)
+            restore_original_mo(wowsdir, locale)
             return
 
         change_prefix = []
@@ -61,15 +62,15 @@ def rename_ships(changesets, config, undo):
             click.echo("No changes to apply.")
             return
 
-        backup_original_mo(wowsdir)
+        backup_original_mo(wowsdir, locale)
 
-        mo_file = get_mo(wowsdir)
+        mo_file = get_mo(wowsdir, locale)
         apply_changes(mo_file, change_replace)
         apply_changes(mo_file, change_prefix)
         mo_file.save()
     except Exception as err:
         click.echo("Aborting…")
-        restore_original_mo(wowsdir)
+        restore_original_mo(wowsdir, locale)
         raise err
 
 

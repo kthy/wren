@@ -8,8 +8,6 @@ from tempfile import mkdtemp
 
 from pytest import fixture
 
-from wren.pomo import LC
-
 BIN = "7777777"
 TEST_MO_PATH = "./tests/testdata/global.mo"
 
@@ -24,7 +22,7 @@ def fixture_wowsdir():
 
 
 def _prepare_global_mo(wowsbin):
-    binlcdir = abspath(f"{wowsbin}/{LC}")
+    binlcdir = abspath(f"{wowsbin}/res/texts/en/LC_MESSAGES")
     makedirs(binlcdir)
     copyfile(TEST_MO_PATH, f"{binlcdir}/global.mo")
     assert exists(f"{binlcdir}/global.mo")
