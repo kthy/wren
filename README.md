@@ -13,7 +13,7 @@ It goes without saying that the changes made by this program are local and only 
 own game client.
 
 Before running the program, ensure the `wowsPath` at the top of the configuration file points to
-the relevant directory on your computer.
+the relevant directory on your computer. You may also want to modify the `locale` setting.
 
 ```text
 $ wren --help
@@ -44,7 +44,12 @@ Available changesets in the packaged version are:
 * `radarNoRange` for prefixing the name of all (potentially) radar-equipped ships a radar marker,
   e.g. `φ Minotaur`.
 
-## Development environment setup
+## Contributing
+
+If you have an idea for another changeset that you think would be of general interest, feel
+free to send it to me for inclusion.
+
+### Development environment setup
 
 * Assumes you have `pipenv` installed and in your path.
 * Assumes Windows 10.
@@ -59,9 +64,9 @@ pipenv install --dev
 
 1. Commit the code to be released as a new version and verify that the CI build
    completed without errors.
-1. Commit a new text file in `./release-notes/` named after the new version's number,
-   e.g. `./release-notes/v1.2.3.txt`. The text in this file will be displayed as
-   release notes on Github.
+1. Commit a new Markdown file in `./release-notes/` named after the new version's
+   number, e.g. `./release-notes/v1.2.3.md`. The text in this file will be displayed
+   as release notes on Github.
 1. Tag the latest commit with the new version name, e.g. `v1.2.3`, and push to remote.
 
 ---
@@ -71,8 +76,8 @@ pipenv install --dev
 [![Requirements Status][requirements-badge-img]][requirements-badge-href]
 [![Updates][pyup-badge-img]][pyup-badge-href]
 
-![Build status, main branch][github-actions-main-badge-img]
-![Build status, dev branch][github-actions-dev-badge-img]
+![Build status][github-actions-build-badge-img]
+![Release status][github-actions-release-badge-img]
 [![Code coverage][codecov-badge-img]][codecov-badge-href]
 [![Maintainability rating][sonarcloud-badge-img]][sonarcloud-badge-href]
 
@@ -84,8 +89,8 @@ pipenv install --dev
 [codecov-badge-img]: https://codecov.io/gh/kthy/wren/branch/main/graph/badge.svg
 [conventional-commits-badge-href]: https://www.conventionalcommits.org/en/v1.0.0/
 [conventional-commits-badge-img]: https://img.shields.io/badge/conventional%20commits-1.0.0-blue.svg
-[github-actions-dev-badge-img]: https://github.com/kthy/wren/workflows/build-dev/badge.svg
-[github-actions-main-badge-img]: https://github.com/kthy/wren/workflows/build-main/badge.svg
+[github-actions-build-badge-img]: https://github.com/kthy/wren/workflows/build/badge.svg
+[github-actions-release-badge-img]: https://github.com/kthy/wren/workflows/release/badge.svg
 [pyup-badge-href]: https://pyup.io/repos/github/kthy/wren/
 [pyup-badge-img]: https://pyup.io/repos/github/kthy/wren/shield.svg
 [requirements-badge-href]: https://requires.io/github/kthy/wren/requirements/?branch=main
