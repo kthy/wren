@@ -34,7 +34,7 @@ jobs:
           pipenv run python -OO -m PyInstaller --clean --noconfirm --onefile --name wren --icon ./img/wren-logo-32.ico --version-file fixedfileinfo.txt ./wren/__main__.py
       - name: Create zip archive for release
         run: |
-          move dist/wren.exe .
+          cd dist
           7z a -tzip -bd wren-${{ steps.semver.outputs.semver }}.zip wren.cfg wren.exe README.txt
       - name: Release
         uses: softprops/action-gh-release@v1
