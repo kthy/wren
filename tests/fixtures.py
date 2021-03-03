@@ -9,16 +9,16 @@ from tempfile import mkdtemp
 from config import Config
 from pytest import fixture
 
-TMPDIR = f"{mkdtemp(prefix='wren-pytest-')}"
+WRENTMPDIR = f"{mkdtemp(prefix='wren-pytest-')}"
 
 for b in ("1111111", "2222222", "3333333", "4444444", "5555555", "6666666", "7777777"):
-    makedirs(abspath(f"{TMPDIR}/bin/{b}"))
+    makedirs(abspath(f"{WRENTMPDIR}/bin/{b}"))
 
 
 @fixture(name="config")
 def fixture_config():
     """Yield config object."""
-    environ["TMPDIR"] = TMPDIR + "\\bin"
+    environ["WRENTMPDIR"] = WRENTMPDIR + "\\bin"
     cfg = Config("./tests/testdata/test.cfg")
     yield cfg
 
@@ -26,9 +26,9 @@ def fixture_config():
 @fixture(name="wowsdir")
 def fixture_wowsdir():
     """Yield WoWs directory."""
-    _prepare_global_mo(f"{TMPDIR}\\bin\\7777777")
-    yield f"{TMPDIR}\\bin\\7777777"
-    rmtree(TMPDIR)
+    _prepare_global_mo(f"{WRENTMPDIR}\\bin\\7777777")
+    yield f"{WRENTMPDIR}\\bin\\7777777"
+    rmtree(WRENTMPDIR)
 
 
 def _prepare_global_mo(wowsbin):

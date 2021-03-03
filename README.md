@@ -4,7 +4,7 @@ Does what it says on the tin. A utility that can rename ships in the [World of W
 [Wargaming.net]. Hence, **W**orld of Warships **Ren**amer &rarr; **wren**.
 
 <p align="center">
-  <img src="img/wren-logo.png" width="128px"/>
+  <img src="img/wren-logo-white.png" width="128px"/>
 </p>
 
 ## Usage
