@@ -31,7 +31,7 @@ jobs:
           pipenv run create-version-file version.yml --outfile fixedfileinfo.txt --version ${{ steps.semver.outputs.semver }}.${{ github.run_number }}
       - name: Build executable
         run: |
-          pipenv run python -OO -m PyInstaller --clean --noconfirm --onefile --name wren --icon ./img/wren-logo-32.ico --version-file fixedfileinfo.txt ./wren/__main__.py
+          pipenv run python -OO -m PyInstaller --clean --noconfirm --onefile --name wren --icon ./img/wren-logo-white.ico --version-file fixedfileinfo.txt ./wren/__main__.py
       - name: Create zip archive for release
         run: |
           cd dist
