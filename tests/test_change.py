@@ -11,6 +11,16 @@ def test_action___repr__():
     assert lazarus is Action.REPLACE
 
 
+def test_change___eq_and_hash__():
+    """Test the __eq__ and __hash__ methods of the Change class."""
+    change1 = Change(Action.PREFIX.value, "foo", "bar")
+    change2 = Change(Action.PREFIX.value, "foo", "bar")
+    change3 = Change(Action.REPLACE.value, "foo", "bar")
+    assert change1 == change2
+    assert change1 != change3
+    assert change1.__hash__() == change2.__hash__()
+
+
 def test_change_is_prefix():
     """Test the is_prefix method of the Change class."""
     change_prefix = Change(Action.PREFIX.value, "", "")
