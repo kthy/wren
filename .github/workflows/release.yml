@@ -42,5 +42,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           body_path: release-notes/v${{ steps.semver.outputs.semver }}.md
-          files: wren-${{ steps.semver.outputs.semver }}.zip
+          files: dist/wren-${{ steps.semver.outputs.semver }}.zip
           prerelease: false
